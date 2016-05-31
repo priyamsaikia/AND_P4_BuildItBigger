@@ -12,12 +12,10 @@
     tools:context="apps.orchotech.com.builditbigger.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
     <fragment
+        android:id="@+id/fragment"
+        android:name="apps.orchotech.com.builditbigger.fragments.DynamicFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_dynamic" />
 </RelativeLayout>
