@@ -1,5 +1,6 @@
 package apps.orchotech.com.builditbigger.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.orchotech.java.library.Comedian;
 
+import apps.orchotech.com.androidlibrary.LibActivity;
 import apps.orchotech.com.builditbigger.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,6 +38,9 @@ public class DynamicFragment extends Fragment {
     public void onButtonClick(View v) {
         Comedian comedian = new Comedian();
         String joke = comedian.perform();
+        Intent intent=new Intent(getActivity(), LibActivity.class);
+        intent.putExtra("joke",joke);
+        startActivity(intent);
         Toast.makeText(getActivity(), joke, Toast.LENGTH_SHORT).show();
     }
 }
