@@ -41,6 +41,5 @@ public class DynamicFragment extends Fragment {
         Intent intent=new Intent(getActivity(), LibActivity.class);
         intent.putExtra("joke",joke);
         startActivity(intent);
-        Toast.makeText(getActivity(), joke, Toast.LENGTH_SHORT).show();
     }
 }

@@ -22,18 +22,19 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+
+
+    compile project(':comedian_lib')
+    compile project(":androidlibrary")
+
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
-
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:+'
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:cardview-v7:23.0.+'
-
-    compile project(':comedian_lib')
-    compile project(":androidlibrary")
-
+    compile 'com.android.support:cardview-v7:23.3.0'
+    compile project(path: ':ApplicationBackend', configuration: 'android-endpoints')
 }
