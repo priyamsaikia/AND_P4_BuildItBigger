@@ -7,8 +7,6 @@ import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.orchotech.builtitbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
@@ -54,6 +52,10 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        ((AsyncCallBack) context).onPostExecute(result);
+    }
+
+    public interface AsyncCallBack {
+        void onPostExecute(String joke);
     }
 }

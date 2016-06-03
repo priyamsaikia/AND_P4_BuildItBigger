@@ -9,26 +9,31 @@ package com.orchotech.builtitbigger.backend;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
+import com.orchotech.java.library.Comedian;
 
 import javax.inject.Named;
 
-/** An endpoint class we are exposing */
+/**
+ * An endpoint class we are exposing
+ */
 @Api(
-  name = "myApi",
-  version = "v1",
-  namespace = @ApiNamespace(
-    ownerDomain = "backend.builtitbigger.orchotech.com",
-    ownerName = "backend.builtitbigger.orchotech.com",
-    packagePath=""
-  )
+        name = "myApi",
+        version = "v1",
+        namespace = @ApiNamespace(
+                ownerDomain = "backend.builtitbigger.orchotech.com",
+                ownerName = "backend.builtitbigger.orchotech.com",
+                packagePath = ""
+        )
 )
 public class MyEndpoint {
 
-    /** A simple endpoint method that takes a name and says Hi back */
+    /**
+     * A simple endpoint method that takes a name and says Hi back
+     */
     @ApiMethod(name = "sayHi")
     public MyBean sayHi(@Named("name") String name) {
         MyBean response = new MyBean();
-        response.setData("Hi, " + name);
+        response.setData(new Comedian().sayAJoke(1));
 
         return response;
     }

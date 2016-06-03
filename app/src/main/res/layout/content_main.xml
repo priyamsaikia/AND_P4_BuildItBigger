@@ -12,10 +12,5 @@
     tools:context="apps.orchotech.com.builditbigger.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="apps.orchotech.com.builditbigger.fragments.DynamicFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/fragment_dynamic" />
+    <include layout="@layout/fragment_dynamic"/>
 </RelativeLayout>
