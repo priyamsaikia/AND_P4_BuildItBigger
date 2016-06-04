@@ -18,6 +18,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        free {
+            applicationId "apps.orchotech.com.builditbigger.free"
+        }
+        paid {
+            applicationId "apps.orchotech.com.builditbigger.paid"
+        }
+    }
 }
 
 dependencies {
@@ -39,4 +48,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.3.0'
     compile 'com.android.support:multidex:1.0.0'
     compile project(path: ':ApplicationBackend', configuration: 'android-endpoints')
+
+    //ad code
+    freeCompile 'com.google.android.gms:play-services:9.0.2'
 }
