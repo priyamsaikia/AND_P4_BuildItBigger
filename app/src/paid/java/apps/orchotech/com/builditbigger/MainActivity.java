@@ -1,5 +1,6 @@
 package apps.orchotech.com.builditbigger;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsyncTas
 
     @Bind(R.id.btn_tell_me_a_joke)
     Button btn;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +36,13 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsyncTas
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String joke = new Comedian().perform();
-                Toast.makeText(MainActivity.this,joke,Toast.LENGTH_SHORT).show();
-                new EndpointsAsyncTask().execute(new Pair<Context, String>(MainActivity.this, "Priyam"));
-            }
-        });
-
     }
 
     @OnClick(R.id.btn_tell_me_a_joke)
     public void onButtonClick(View v) {
-
+        mProgressDialog = new ProgressDialog(MainActivity.this);
+        mProgressDialog.setMessage("Retrieving Jokes...");
+        mProgressDialog.show();
         new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Priyam"));
 
     }
@@ -78,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsyncTas
 
     @Override
     public void onPostExecute(String joke) {
+        mProgressDialog.hide();
         Intent intent = new Intent(this, LibActivity.class);
         intent.putExtra("joke", joke);
         startActivity(intent);

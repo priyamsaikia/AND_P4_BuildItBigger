@@ -49,16 +49,6 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsyncTas
         mInterstitialAd.setAdUnitId(String.valueOf(getText(R.string.test_inter_ad_unit_id)));
         final AdRequest adRequest = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(adRequest);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String joke = new Comedian().perform();
-                Toast.makeText(MainActivity.this, joke, Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
     @OnClick(R.id.btn_tell_me_a_joke)
